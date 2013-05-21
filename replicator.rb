@@ -11,6 +11,10 @@ def say_something(text)
   say "\033[1m\033[36m#{text}\033[0m"
 end
 
+def ask_something(question)
+  ask "\033[1m\033[36m#{question.rjust(10)}\033[0m"
+end
+
 def import_template(source, destination)
   if DEVELOPMENT
     template source, destination
@@ -19,17 +23,32 @@ def import_template(source, destination)
   end
 end
 
+# def yes_wizard?(question)
+#   answer = ask_wizard(question + " \033[33m(y/n)\033[0m")
+#   case answer.downcase
+#     when "yes", "y"
+#       true
+#     when "no", "n"
+#       false
+#     else
+#       yes_wizard?(question)
+#   end
+# end
+
+# def no_wizard?(question); !yes_wizard?(question) end
+
 # ask some questions
 use_mongo = false
-if yes? "Do you want to use MongoDB instead of PostgreSQL? (y|N)"
+if yes? "Do you want to use MongoDB instead of PostgreSQL? [y|N]"
   use_mongo = true
   say_something "Using MongoDB instead of PostgreSQL"
 end
 
 use_devise = false
-if yes? "Do you want to use Devise for authentication? (y|N)"
+if yes? "Do you want to use Devise for authentication? [y|N]"
   use_devise = true
-  say_something "Using Devise for authentication"
+  devise_model_name = ask_something "What would you like the user model to be called? [user]"
+  devise_model_name = "user" if devise_model_name.blank?
 end
 
 # before installing gems, setup and use RVM
@@ -223,17 +242,16 @@ production:
 end
 
 if use_devise
-  say_something "Setup Devise"
+  say_something "Setting up Devise"
   generate "devise:install"
+  generate "devise", devise_model_name
   route %Q(
-devise_for :users
-  devise_scope :user do
+  devise_scope :#{devise_model_name} do
     get "login", :to => "devise/sessions#new"
     delete "logout", to: "devise/sessions#destroy"
     get "signup", to: "devise/registrations#new"
   end
 )
-  generate "devise", "user"
 end
 
 # initializers
@@ -323,6 +341,9 @@ if use_mongo
   # end
 end
 remove_dir "test"
+
+remove_file "app/assets/stylesheets/application.css", "app/assets/stylesheets/static_page.css.scss"
+# TODO: Copy over default styles
 
 # setup git
 git :init
