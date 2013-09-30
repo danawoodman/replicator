@@ -1,0 +1,13 @@
+- flash.each do |name, msg|
+  - if name.to_s == 'alert'
+    .alert.alert-danger
+      = link_to "&times;".html_safe, '#', 'data-dismiss' => 'alert', 'aria-hidden' => 'true', class: 'close'
+      i.icon-remove
+      | &nbsp;&nbsp;
+      = msg
+  - else
+    .alert.alert-success
+      = link_to "&times;".html_safe, '#', 'data-dismiss' => 'alert', 'aria-hidden' => 'true', class: 'close'
+      i.icon-ok
+      | &nbsp;&nbsp;
+      = msg
