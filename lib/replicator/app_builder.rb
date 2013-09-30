@@ -284,7 +284,7 @@ module Replicator
       template 'admin_dashboard_controller.rb', 
         'app/controllers/admin/dashboard_controller.rb'
       run 'mkdir app/views/admin'
-      run 'touvh app/views/admin/dashboard.html.slim'
+      run 'touch app/views/admin/dashboard.html.slim'
     end
 
     def setup_ability_file
