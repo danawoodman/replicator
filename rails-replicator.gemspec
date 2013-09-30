@@ -4,7 +4,7 @@ require 'replicator/version'
 require 'date'
 
 Gem::Specification.new do |s|
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 1.9.2'
   s.add_dependency 'bundler', '~> 1.3'
   s.add_dependency 'rails', '4.0.0'
   s.authors = ['teleporter']
