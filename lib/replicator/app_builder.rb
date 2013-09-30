@@ -83,11 +83,11 @@ module Replicator
     end
 
     def create_shared_flashes
-      copy_file '_flashes.html.slim.erb', 'app/views/application/_flashes.html.slim.erb'
+      copy_file '_flashes.html.slim.erb', 'app/views/application/_flashes.html.slim'
     end
 
     def create_shared_javascripts
-      copy_file '_javascript.html.slim.erb', 'app/views/application/_javascript.html.slim.erb'
+      copy_file '_javascript.html.slim.erb', 'app/views/application/_javascript.html.slim'
     end
 
     def create_application_layout
@@ -304,7 +304,7 @@ module Replicator
       # setup devise/cancan/rolify
       generate 'devise:install'
       generate 'devise user'
-      generate 'devise:views'
+      directory 'devise', 'app/views/devise'
 
       # TODO: convert devise views to slim/bootstrap
       generate 'rolify:role'
