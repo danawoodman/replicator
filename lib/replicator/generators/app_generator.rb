@@ -176,8 +176,8 @@ module Replicator
       build :customize_error_pages
     end
 
-    def remove_routes_comment_lines
-      build :remove_routes_comment_lines
+    def update_routes
+      build :update_routes
     end
 
     def migrate_database
