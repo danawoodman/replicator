@@ -50,6 +50,7 @@ module Replicator
     def customize_gemfile
       build :replace_gemfile
       build :set_ruby_to_version_being_used
+      build :setup_rvmrc
       bundle_command 'install'
     end
 
