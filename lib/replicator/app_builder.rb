@@ -189,7 +189,7 @@ module Replicator
     end
 
     def setup_foreman
-      copy_file 'sample.env', '.ample.env'
+      copy_file 'sample.env', '.sample.env'
       copy_file 'Procfile', 'Procfile'
     end
 
