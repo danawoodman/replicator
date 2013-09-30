@@ -280,12 +280,13 @@ module Replicator
   end
 
   namespace "admin" do
-    resources :puppies
+    # resources :puppies
     get '', to: 'dashboard#index'
   end
 
   root to: 'pages#index'
       ROUTES
+      inject_into_class 'config/routes.rb', 'Application', routes
     end
 
     def generate_pages_controller
