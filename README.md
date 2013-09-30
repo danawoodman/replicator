@@ -7,7 +7,7 @@ Ruby on Rails application generator used by the [Teleporter](http://teleporter.i
 Installation is simple, just install the `replicator` gem:
 
 ```bash
-gem install replicator
+gem install rails-replicator
 ```
 
 ## Usage

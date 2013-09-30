@@ -20,7 +20,7 @@ Rails application generator used at Teleporter, based on thoughtbot/suspenders.
   s.files = `git ls-files`.split("\n")
   s.homepage = 'http://github.com/teleporter/replicator'
   s.license = 'MIT'
-  s.name = 'replicator'
+  s.name = 'rails-replicator'
   s.rdoc_options = ['--charset=UTF-8']
   s.require_paths = ['lib']
   s.summary = "Generate a Rails app using Teleporter's best practices."
