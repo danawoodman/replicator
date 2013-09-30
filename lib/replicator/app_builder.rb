@@ -311,9 +311,11 @@ module Replicator
       copy_file 'disable_xml_params.rb', 'config/initializers/disable_xml_params.rb'
     end
 
-    def setup_guard_and_devise_cancan
+    def setup_guard
       run 'bundle exec guard init'
+    end
 
+    def setup_devise_and_cancan
       # setup devise/cancan/rolify
       generate 'devise:install'
       generate 'devise user'

@@ -119,7 +119,8 @@ module Replicator
       build :setup_application_helper
       build :configure_unicorn
       build :setup_foreman
-      build :setup_guard_and_devise_cancan
+      build :setup_guard
+      build :setup_devise_and_cancan
       build :generate_pages_controller
       build :setup_admin_section
     end
