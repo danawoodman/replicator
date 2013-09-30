@@ -263,7 +263,8 @@ module Replicator
 
     def setup_application_helper
       template 'application_helper.rb',
-        'app/helpers/application_helper.rb'
+        'app/helpers/application_helper.rb',
+        force: true
     end
 
     def remove_routes_comment_lines
