@@ -15,7 +15,7 @@ if [ ! -f .env ]; then
 fi
 
 # Pick a port for Foreman
-echo "port: 7000" > .foreman
+echo "port: 3000" > .foreman
 
 # Set up DNS via Pow
 # if [ -d ~/.pow ]
