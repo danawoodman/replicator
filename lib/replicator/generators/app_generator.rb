@@ -35,6 +35,7 @@ module Replicator
       invoke :copy_miscellaneous_files
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
+      invoke :migrate_database
       invoke :setup_git
       invoke :create_heroku_apps
       invoke :create_github_repo
@@ -176,6 +177,11 @@ module Replicator
 
     def remove_routes_comment_lines
       build :remove_routes_comment_lines
+    end
+
+    def migrate_database
+      say 'Migrating database'
+      build :migrate_database
     end
 
     def outro

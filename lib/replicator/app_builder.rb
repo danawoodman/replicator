@@ -331,6 +331,11 @@ module Replicator
       end
     end
 
+    def migrate_database
+      run 'rake db:migrate'
+      run 'rake db:test:prepare'
+    end
+
   private
 
     def override_path_for_tests
