@@ -267,26 +267,10 @@ module Replicator
         force: true
     end
 
-    def remove_routes_comment_lines
-      replace_in_file 'config/routes.rb',
-        /Application\.routes\.draw do.*end/m,
-        "Application.routes.draw do\nend"
-      routes = <<-ROUTES
-  devise_for :users
-  devise_scope :user do
-    get "login", :to => "devise/sessions#new"
-    delete "logout", to: "devise/sessions#destroy"
-    get "signup", to: "devise/registrations#new"
-  end
-
-  namespace "admin" do
-    # resources :puppies
-    get '', to: 'dashboard#index'
-  end
-
-  root to: 'pages#index'
-      ROUTES
-      inject_into_class 'config/routes.rb', 'Application', routes
+    def update_routes
+      template 'routes.rb.erb', 
+        'config/routes.rb',
+        force: true
     end
 
     def generate_pages_controller

@@ -34,7 +34,7 @@ module Replicator
       invoke :setup_stylesheets
       invoke :copy_miscellaneous_files
       invoke :customize_error_pages
-      invoke :remove_routes_comment_lines
+      invoke :update_routes
       invoke :migrate_database
       invoke :setup_git
       invoke :create_heroku_apps
