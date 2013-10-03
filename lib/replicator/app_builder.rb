@@ -121,7 +121,7 @@ module Replicator
 
     def replace_gemfile
       remove_file 'Gemfile'
-      copy_file 'Gemfile_clean', 'Gemfile'
+      copy_file 'Gemfile_clean.erb', 'Gemfile'
     end
 
     def set_ruby_to_version_being_used
